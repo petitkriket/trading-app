@@ -16,13 +16,11 @@
 // Import commands.js using ES2015 syntax:
 import './commands'
 
-// Alternatively you can use CommonJS syntax:
-// require('./commands')
-
-// Import global styles
-// import '@/assets/main.css'
-
 import { mount } from 'cypress/vue'
+import { createPinia } from 'pinia'
+import { VueQueryPlugin } from '@tanstack/vue-query'
+import { createRouter, createMemoryHistory } from 'vue-router'
+import queryClient from '@/core/query-client'
 
 // Augment the Cypress namespace to include type definitions for
 // your custom command.
@@ -37,7 +35,20 @@ declare global {
   }
 }
 
-Cypress.Commands.add('mount', mount)
+// Pour référence
+// https://docs.cypress.io/app/component-testing/vue/examples#Replicating-Plugins
+Cypress.Commands.add('mount', (component, options = {}) => {
+  options.global = options.global || {}
+  options.global.plugins = options.global.plugins || []
 
-// Example use:
-// cy.mount(MyComponent)
+  const router = createRouter({
+    history: createMemoryHistory(),
+    routes: [],
+  })
+
+  options.global.plugins.push(createPinia())
+  options.global.plugins.push([VueQueryPlugin, { queryClient }], router)
+  options.global.plugins.push(router)
+
+  return mount(component, options)
+})

@@ -6,6 +6,7 @@
     "oxc.oxc-vscode",
     "esbenp.prettier-vscode",
     "streetsidesoftware.code-spell-checker",
-    "streetsidesoftware.code-spell-checker-french"
+    "streetsidesoftware.code-spell-checker-french",
+    "GitHub.vscode-github-actions"
   ]
 }
