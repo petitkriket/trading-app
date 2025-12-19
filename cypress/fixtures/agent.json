@@ -1,0 +1,10 @@
+{
+  "data": {
+    "accountId": "test-account-123",
+    "symbol": "TEST_AGENT",
+    "headquarters": "X1-TEST-HQ",
+    "credits": 100000,
+    "startingFaction": "COSMIC",
+    "shipCount": 5
+  }
+}

@@ -31,6 +31,13 @@ export default defineConfigWithVueTs(
       'cypress/support/**/*.{js,ts,jsx,tsx}'
     ],
   },
+  {
+    name: 'app/pages-naming',
+    files: ['**/pages/**/*.vue'],
+    rules: {
+      'vue/multi-word-component-names': 'off',
+    },
+  },
   ...pluginOxlint.configs['flat/recommended'],
   skipFormatting,
 )

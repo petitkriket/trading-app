@@ -1,0 +1,17 @@
+# Auto-generated files
+src/core/api/v2.d.ts
+src/typed-router.d.ts
+CHANGELOG.md
+
+# Dependencies
+node_modules
+
+# Build output
+dist
+.output
+
+# Coverage
+coverage
+
+# Misc
+.DS_Store
