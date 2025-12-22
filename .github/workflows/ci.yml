@@ -65,6 +65,9 @@ jobs:
       - name: Component tests
         run: npm run test:unit
 
+      - name: Build for E2E tests
+        run: npm run build
+
       - name: E2E tests
         run: npm run test:e2e
 
@@ -91,6 +94,9 @@ jobs:
         uses: actions/configure-pages@v4
 
       - name: Build
+        # Ovride VITE_BASE_PATH pour le deploiement sur GitHub Pages
+        env:
+          VITE_BASE_PATH: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && '/trading-app/' || '/' }}
         run: npm run build
 
       - name: Upload to GitHub Pages

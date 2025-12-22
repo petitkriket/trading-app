@@ -6,7 +6,7 @@ import VueRouter from 'unplugin-vue-router/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: process.env.GITHUB_ACTIONS ? '/trading-app/' : '/',
+  base: process.env.VITE_BASE_PATH || '/',
   plugins: [
     VueRouter({
       routesFolder: [{ src: 'src/features/auth/pages' }, { src: 'src/features/dashboard/pages' }],
