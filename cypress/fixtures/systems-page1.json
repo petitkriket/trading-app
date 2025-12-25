@@ -1,0 +1,52 @@
+{
+  "data": [
+    {
+      "symbol": "X1-TEST1",
+      "sectorSymbol": "X1",
+      "type": "RED_STAR",
+      "x": 10,
+      "y": 20,
+      "waypoints": [
+        {
+          "symbol": "X1-TEST1-A"
+        },
+        {
+          "symbol": "X1-TEST1-B"
+        }
+      ],
+      "factions": [
+        {
+          "symbol": "COSMIC"
+        },
+        {
+          "symbol": "VOID"
+        }
+      ]
+    },
+    {
+      "symbol": "X1-TEST2",
+      "sectorSymbol": "X1",
+      "type": "NEUTRON_STAR",
+      "x": 30,
+      "y": 40,
+      "waypoints": [
+        {
+          "symbol": "X1-TEST2-A"
+        }
+      ]
+    },
+    {
+      "symbol": "X1-TEST3",
+      "sectorSymbol": "X1",
+      "type": "BLUE_STAR",
+      "x": 50,
+      "y": 60,
+      "waypoints": []
+    }
+  ],
+  "meta": {
+    "total": 23,
+    "page": 1,
+    "limit": 3
+  }
+}

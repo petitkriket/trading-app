@@ -1,0 +1,32 @@
+{
+  "data": [
+    {
+      "symbol": "X1-TEST4",
+      "sectorSymbol": "X1",
+      "type": "ORANGE_STAR",
+      "x": 70,
+      "y": 80,
+      "waypoints": [
+        {
+          "symbol": "X1-TEST4-A"
+        },
+        {
+          "symbol": "X1-TEST4-B"
+        },
+        {
+          "symbol": "X1-TEST4-C"
+        }
+      ],
+      "factions": [
+        {
+          "symbol": "DOMINION"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "total": 23,
+    "page": 2,
+    "limit": 3
+  }
+}
