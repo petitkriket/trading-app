@@ -44,7 +44,10 @@ describe("Page de profil de l'agent", () => {
       cy.intercept('GET', '**/v2/my/agent', {
         statusCode: 500,
         body: {
-          message: 'Internal Server Error',
+          error: {
+            message: 'Internal Server Error',
+            code: 500,
+          },
         },
       }).as('getAgentError')
 
