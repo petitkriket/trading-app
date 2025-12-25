@@ -7,6 +7,34 @@ import { useTokenStore } from '@/features/auth'
 
 import type { paths } from './v2'
 
+type ZodIssue = {
+  code: string
+  maximum?: number
+  minimum?: number
+  type?: string
+  inclusive?: boolean
+  exact?: boolean
+  message: string
+  path: (string | number)[]
+}
+
+export type SpaceTradersError = {
+  error: {
+    code: number
+    message: string
+    data?: {
+      zodIssues?: ZodIssue[]
+      originalError?: {
+        issues: ZodIssue[]
+        name: string
+      }
+    }
+    requestId?: string
+  }
+}
+
+export type { paths as SpV2 }
+
 const authMiddleware: Middleware = {
   async onRequest({ request }) {
     const token = useTokenStore().token
