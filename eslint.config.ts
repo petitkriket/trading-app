@@ -1,8 +1,7 @@
 import { globalIgnores } from 'eslint/config'
 import { defineConfigWithVueTs, vueTsConfigs } from '@vue/eslint-config-typescript'
 import pluginVue from 'eslint-plugin-vue'
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
+import pluginQuery from '@tanstack/eslint-plugin-query'
 import pluginCypress from 'eslint-plugin-cypress'
 import pluginOxlint from 'eslint-plugin-oxlint'
 import skipFormatting from '@vue/eslint-config-prettier/skip-formatting'
@@ -22,13 +21,12 @@ export default defineConfigWithVueTs(
 
   pluginVue.configs['flat/essential'],
   vueTsConfigs.recommended,
-  
   {
     ...pluginCypress.configs.recommended,
     files: [
       '**/__tests__/*.{cy,spec}.{js,ts,jsx,tsx}',
       'cypress/e2e/**/*.{cy,spec}.{js,ts,jsx,tsx}',
-      'cypress/support/**/*.{js,ts,jsx,tsx}'
+      'cypress/support/**/*.{js,ts,jsx,tsx}',
     ],
   },
   {
@@ -39,5 +37,6 @@ export default defineConfigWithVueTs(
     },
   },
   ...pluginOxlint.configs['flat/recommended'],
+  ...pluginQuery.configs['flat/recommended'],
   skipFormatting,
 )
