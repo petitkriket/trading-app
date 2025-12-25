@@ -29,12 +29,14 @@ const onSubmit = () => {
     <form @submit.prevent="onSubmit" aria-label="Login form">
       <div class="form-group">
         <label for="token">Agent Token:</label>
-        <input
+        <textarea
           id="token"
           v-model="tokenInput"
-          type="text"
           name="token"
+          rows="12"
+          autofocus
           placeholder="Paste your agent token here"
+          aria-label="Agent Token"
           autocomplete="off"
           :aria-invalid="!!error"
           aria-describedby="token-error"
@@ -76,16 +78,17 @@ label {
   font-weight: 500;
 }
 
-input {
+#token {
   width: 100%;
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 14px;
   box-sizing: border-box;
+  resize: none;
 }
 
-input:focus {
+#token:focus {
   outline: none;
   border-color: #4caf50;
 }
@@ -96,7 +99,7 @@ input:focus {
   font-size: 14px;
 }
 
-button {
+button[type='submit'] {
   width: 100%;
   padding: 12px;
   background-color: #4caf50;
@@ -107,7 +110,7 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+button[type='submit']:hover {
   background-color: #45a049;
 }
 </style>
