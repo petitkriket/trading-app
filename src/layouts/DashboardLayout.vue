@@ -20,7 +20,7 @@ const handleLogout = () => {
   <div class="dashboard-layout">
     <header class="dashboard-header">
       <h1>Corridor 5</h1>
-      <button @click="handleLogout" class="logout-btn">Logout</button>
+      <button class="logout-btn" @click="handleLogout">Logout</button>
     </header>
 
     <div class="dashboard-container">
