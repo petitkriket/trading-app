@@ -1,15 +1,5 @@
 <template>
-  <div :class="$style.layout">
+  <div class="min-h-screen flex items-center justify-center bg-base-100">
     <slot />
   </div>
 </template>
-
-<style module>
-.layout {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #f0f0f0;
-}
-</style>

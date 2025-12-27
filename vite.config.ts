@@ -1,13 +1,15 @@
 import { fileURLToPath, URL } from 'node:url'
 
 import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import tailwindcss from '@tailwindcss/vite'
 import VueRouter from 'unplugin-vue-router/vite'
+import vue from '@vitejs/plugin-vue'
 
 // https://vite.dev/config/
 export default defineConfig({
   base: process.env.VITE_BASE_PATH || '/',
   plugins: [
+    tailwindcss(),
     VueRouter({
       routesFolder: [{ src: 'src/features/auth/pages' }, { src: 'src/features/dashboard/pages' }],
       dts: 'src/typed-router.d.ts',

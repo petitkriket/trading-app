@@ -12,112 +12,77 @@ const availableSystems = computed(() => data.value?.pages[0]?.meta.total ?? 0)
 
 <template>
   <div>
-    <h1>Systems</h1>
+    <h1 class="text-3xl font-bold mb-6">Systems</h1>
 
     <template v-if="systemsData.length > 0">
-      <div :class="$style.stats">
-        <strong>Loaded {{ loadedSystemsCount }} of {{ availableSystems }} systems</strong>
+      <div class="mb-4">
+        <div class="badge badge-primary badge-lg">
+          Loaded {{ loadedSystemsCount }} of {{ availableSystems }} systems
+        </div>
       </div>
 
-      <div :class="$style.grid">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div
           v-for="system in systemsData"
           :key="system.symbol"
-          :class="$style.card"
+          class="card card-dash bg-base-100"
           role="region"
           :aria-label="`System ${system.symbol}`"
         >
-          <div>
-            <strong>Symbol:</strong>
-            <span>{{ system.symbol }}</span>
-          </div>
-          <div>
-            <strong>Type:</strong>
-            <span>{{ system.type }}</span>
-          </div>
-          <div>
-            <strong>Sector:</strong>
-            <span>{{ system.sectorSymbol }}</span>
-          </div>
-          <div>
-            <strong>Coordinates:</strong>
-            <span>x: {{ system.x }}, y: {{ system.y }}</span>
-          </div>
-          <div>
-            <strong>Waypoints:</strong>
-            <span>{{ system.waypoints.length }}</span>
-          </div>
-          <div v-if="system.factions?.length">
-            <strong>Factions:</strong>
-            <span>{{ system.factions.map((f) => f.symbol).join(', ') }}</span>
+          <div class="card-body p-4 space-y-2">
+            <div class="flex justify-between items-center">
+              <span class="font-semibold text-sm">Symbol:</span>
+              <span class="badge badge-neutral">{{ system.symbol }}</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="font-semibold text-sm">Type:</span>
+              <span>{{ system.type }}</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="font-semibold text-sm">Sector:</span>
+              <span>{{ system.sectorSymbol }}</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="font-semibold text-sm">Coordinates:</span>
+              <span>x: {{ system.x }}, y: {{ system.y }}</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="font-semibold text-sm">Waypoints:</span>
+              <span class="badge badge-accent">{{ system.waypoints.length }}</span>
+            </div>
+            <div v-if="system.factions?.length" class="flex justify-between items-start">
+              <span class="font-semibold text-sm">Factions:</span>
+              <span class="text-right text-sm">{{
+                system.factions.map((f) => f.symbol).join(', ')
+              }}</span>
+            </div>
           </div>
         </div>
       </div>
 
-      <div v-if="hasNextPage || isFetchingNextPage" :class="$style.actions">
+      <div v-if="hasNextPage || isFetchingNextPage" class="mt-6 flex justify-center">
         <button
-          :class="$style.button"
+          class="btn btn-primary"
           :disabled="!hasNextPage || isFetchingNextPage"
           @click="() => fetchNextPage()"
         >
+          <span v-if="isFetchingNextPage" class="loading loading-spinner loading-sm" />
           {{ isFetchingNextPage ? 'Loading...' : 'Load More Systems' }}
         </button>
       </div>
 
-      <div v-else :class="$style.message">All systems loaded</div>
+      <div v-else class="mt-6 text-center text-base-content/60">All systems loaded</div>
     </template>
 
     <template v-if="isLoading">
-      <div>Loading systems...</div>
+      <div class="flex items-center gap-2">
+        <span class="loading loading-spinner loading-md"></span>
+        <span>Loading systems...</span>
+      </div>
     </template>
 
     <template v-if="error">
-      <div><strong>Error:</strong> {{ error.error.message }}</div>
+      <span class="alert alert-error">Error: {{ error.error.message }}</span>
     </template>
   </div>
 </template>
-
-<style module>
-.stats {
-  margin-bottom: 1rem;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-}
-
-.card {
-  border: 1px solid #ccc;
-  padding: 1rem;
-}
-
-.actions {
-  margin-top: 1rem;
-}
-
-.button {
-  padding: 12px 24px;
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.button:hover {
-  background-color: #45a049;
-}
-
-.button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-.message {
-  margin-top: 1rem;
-  color: #666;
-}
-</style>
