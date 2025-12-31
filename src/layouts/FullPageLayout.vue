@@ -1,11 +1,11 @@
 <template>
-  <div class="full-page-layout">
+  <div :class="$style.layout">
     <slot />
   </div>
 </template>
 
-<style scoped>
-.full-page-layout {
+<style module>
+.layout {
   min-height: 100vh;
   display: flex;
   align-items: center;

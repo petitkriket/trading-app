@@ -15,15 +15,15 @@ const availableSystems = computed(() => data.value?.pages[0]?.meta.total ?? 0)
     <h1>Systems</h1>
 
     <template v-if="systemsData.length > 0">
-      <div style="margin-bottom: 1rem">
+      <div :class="$style.stats">
         <strong>Loaded {{ loadedSystemsCount }} of {{ availableSystems }} systems</strong>
       </div>
 
-      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem">
+      <div :class="$style.grid">
         <div
           v-for="system in systemsData"
           :key="system.symbol"
-          style="border: 1px solid #ccc; padding: 1rem"
+          :class="$style.card"
           role="region"
           :aria-label="`System ${system.symbol}`"
         >
@@ -54,13 +54,17 @@ const availableSystems = computed(() => data.value?.pages[0]?.meta.total ?? 0)
         </div>
       </div>
 
-      <div v-if="hasNextPage || isFetchingNextPage" style="margin-top: 1rem">
-        <button :disabled="!hasNextPage || isFetchingNextPage" @click="() => fetchNextPage()">
+      <div v-if="hasNextPage || isFetchingNextPage" :class="$style.actions">
+        <button
+          :class="$style.button"
+          :disabled="!hasNextPage || isFetchingNextPage"
+          @click="() => fetchNextPage()"
+        >
           {{ isFetchingNextPage ? 'Loading...' : 'Load More Systems' }}
         </button>
       </div>
 
-      <div v-else style="margin-top: 1rem; color: #666">All systems loaded</div>
+      <div v-else :class="$style.message">All systems loaded</div>
     </template>
 
     <template v-if="isLoading">
@@ -72,3 +76,48 @@ const availableSystems = computed(() => data.value?.pages[0]?.meta.total ?? 0)
     </template>
   </div>
 </template>
+
+<style module>
+.stats {
+  margin-bottom: 1rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.card {
+  border: 1px solid #ccc;
+  padding: 1rem;
+}
+
+.actions {
+  margin-top: 1rem;
+}
+
+.button {
+  padding: 12px 24px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #45a049;
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.message {
+  margin-top: 1rem;
+  color: #666;
+}
+</style>

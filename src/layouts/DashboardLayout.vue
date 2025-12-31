@@ -17,37 +17,37 @@ const handleLogout = () => {
 </script>
 
 <template>
-  <div class="dashboard-layout">
-    <header class="dashboard-header">
-      <h1>Corridor 5</h1>
-      <button class="logout-btn" @click="handleLogout">Logout</button>
+  <div :class="$style.layout">
+    <header :class="$style.header">
+      <h1 :class="$style.title">Corridor 5</h1>
+      <button :class="$style.logout" @click="handleLogout">Logout</button>
     </header>
 
-    <div class="dashboard-container">
-      <nav class="dashboard-nav">
-        <ul class="menu-list">
+    <div :class="$style.container">
+      <nav :class="$style.nav">
+        <ul :class="$style.menu">
           <li v-for="item in menuItems" :key="item.to">
-            <RouterLink :to="item.to" class="menu-link">
+            <RouterLink :to="item.to" :class="$style.link" :active-class="$style.active">
               {{ item.label }}
             </RouterLink>
           </li>
         </ul>
       </nav>
 
-      <main class="dashboard-content">
+      <main :class="$style.content">
         <slot />
       </main>
     </div>
   </div>
 </template>
 
-<style scoped>
-.dashboard-layout {
+<style module>
+.layout {
   min-height: 100vh;
   background-color: #f5f5f5;
 }
 
-.dashboard-header {
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -56,12 +56,12 @@ const handleLogout = () => {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.dashboard-header h1 {
+.title {
   margin: 0;
   font-size: 24px;
 }
 
-.logout-btn {
+.logout {
   padding: 8px 16px;
   background-color: #f44336;
   color: white;
@@ -71,11 +71,11 @@ const handleLogout = () => {
   font-size: 14px;
 }
 
-.logout-btn:hover {
+.logout:hover {
   background-color: #da190b;
 }
 
-.dashboard-container {
+.container {
   display: flex;
   gap: 20px;
   max-width: 1200px;
@@ -83,7 +83,7 @@ const handleLogout = () => {
   padding: 40px 20px;
 }
 
-.dashboard-nav {
+.nav {
   flex-shrink: 0;
   width: 200px;
   background-color: white;
@@ -93,17 +93,17 @@ const handleLogout = () => {
   height: fit-content;
 }
 
-.menu-list {
+.menu {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.menu-list li {
+.menu li {
   margin-bottom: 8px;
 }
 
-.menu-link {
+.link {
   display: block;
   padding: 10px 12px;
   text-decoration: none;
@@ -111,16 +111,16 @@ const handleLogout = () => {
   border-radius: 4px;
 }
 
-.menu-link:hover {
+.link:hover {
   background-color: #f5f5f5;
 }
 
-.menu-link.router-link-active {
+.active {
   background-color: #4caf50;
   color: white;
 }
 
-.dashboard-content {
+.content {
   flex: 1;
   padding: 20px;
 }

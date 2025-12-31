@@ -22,16 +22,17 @@ const onSubmit = () => {
 </script>
 
 <template>
-  <div class="token-form">
-    <h1>Welcome to Corridor 5</h1>
-    <p>Enter your agent token to continue</p>
+  <div :class="$style.container">
+    <h1 :class="$style.heading">Welcome to Corridor 5</h1>
+    <p :class="$style.description">Enter your agent token to continue</p>
 
-    <form @submit.prevent="onSubmit" aria-label="Login form">
-      <div class="form-group">
-        <label for="token">Agent Token:</label>
+    <form aria-label="Login form" @submit.prevent="onSubmit">
+      <div :class="$style.field">
+        <label :class="$style.label" for="token">Agent Token:</label>
         <textarea
           id="token"
           v-model="tokenInput"
+          :class="$style.input"
           name="token"
           rows="12"
           autofocus
@@ -43,15 +44,17 @@ const onSubmit = () => {
         />
       </div>
 
-      <div v-if="error" id="token-error" class="error" role="alert">{{ error }}</div>
+      <div v-if="error" id="token-error" :class="$style.error" role="alert">
+        {{ error }}
+      </div>
 
-      <button type="submit">Continue</button>
+      <button type="submit" :class="$style.button">Continue</button>
     </form>
   </div>
 </template>
 
-<style scoped>
-.token-form {
+<style module>
+.container {
   max-width: 500px;
   margin: 50px auto;
   padding: 20px;
@@ -59,26 +62,26 @@ const onSubmit = () => {
   border-radius: 8px;
 }
 
-h1 {
+.heading {
   margin-bottom: 10px;
 }
 
-p {
+.description {
   color: #666;
   margin-bottom: 30px;
 }
 
-.form-group {
+.field {
   margin-bottom: 20px;
 }
 
-label {
+.label {
   display: block;
   margin-bottom: 8px;
   font-weight: 500;
 }
 
-#token {
+.input {
   width: 100%;
   padding: 10px;
   border: 1px solid #ddd;
@@ -88,7 +91,7 @@ label {
   resize: none;
 }
 
-#token:focus {
+.input:focus {
   outline: none;
   border-color: #4caf50;
 }
@@ -99,7 +102,7 @@ label {
   font-size: 14px;
 }
 
-button[type='submit'] {
+.button {
   width: 100%;
   padding: 12px;
   background-color: #4caf50;
@@ -110,7 +113,7 @@ button[type='submit'] {
   cursor: pointer;
 }
 
-button[type='submit']:hover {
+.button:hover {
   background-color: #45a049;
 }
 </style>
