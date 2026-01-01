@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup vapor lang="ts">
 import TokenForm from '../components/TokenForm.vue'
 
 definePage({
