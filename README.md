@@ -1,70 +1,124 @@
-# trading-app
+# Corridor 5 Trading App
 
-This template should help get you started developing with Vue 3 in Vite.
+SpaceTraders is a persistent universe multiplayer game (MMO) with an open access API.
 
-## Recommended IDE Setup
+This application is a GUI for the SpaceTraders API first game.
+It's deployed [here](https://petitkriket.github.io/trading-app/).
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+SpaceTraders mechanics and lore can be found at the [SpaceTraders website](https://docs.spacetraders.io/quickstart/first-mission).
 
-## Recommended Browser Setup
+## Features
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd) 
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+**Implemented:**
 
-## Type Support for `.vue` Imports in TS
+- Authentication and agent management
+- Star systems exploration
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+**Planned:**
 
-## Customize configuration
+- Navigation between star systems
+- Fleet management
+- Markets and trading
+- Real-time notifications or events
+- Trading bots for automated trading
+- Localization if demanded
+  See [ROADMAP.md](./docs/ROADMAP.md) for details.
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+## Requirements
 
-## Project Setup
+- Node.js `^20.19.0` or `>=22.12.0`
+- A SpaceTraders account (register at [SpaceTraders API Dashboard](https://my.spacetraders.io/))
+
+## Running the UI locally
+
+If using nvm (recommended), set Node.js version:
+
+```sh
+nvm use
+```
+
+Install dependencies:
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+Run the application:
 
 ```sh
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+## Development
+
+Generate API types from SpaceTraders OpenAPI spec:
 
 ```sh
-npm run build
+npm run generate:api
 ```
 
-### Run Headed Component Tests with [Cypress Component Testing](https://on.cypress.io/component)
+See the [SpaceTraders API Documentation](https://spacetraders.io/openapi) for more details.
+
+### Tech Stack
+
+- TypeScript
+- OpenAPI-first approach with auto-generated types
+- Vite
+- Vue 3
+- Vue Router
+- TanStack Query
+- Pinia
+- Cypress
+
+### Testing
+
+Run component tests:
 
 ```sh
-npm run test:unit:dev # or `npm run test:unit` for headless testing
+npm run test:unit:dev
 ```
 
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
+Run e2e tests:
 
 ```sh
 npm run test:e2e:dev
 ```
 
-This runs the end-to-end tests against the Vite development server.
-It is much faster than the production build.
+### Linters, Formatters, and Type Checking
 
-But it's still recommended to test the production build with `test:e2e` before deploying (e.g. in CI environments):
-
-```sh
-npm run build
-npm run test:e2e
-```
-
-### Lint with [ESLint](https://eslint.org/)
+Check and fix code:
 
 ```sh
 npm run lint
+npm run format
+npm run type-check
 ```
+
+### Build
+
+Build for production:
+
+```sh
+npm run build
+```
+
+### Project Structure
+
+This project follows a feature-based folder structure:
+
+```
+src/
+├── features/     # Feature modules (auth, agent, systems, etc.)
+├── core/         # Shared core utilities and APIs
+└── layouts/      # Layout components
+```
+
+Each feature is self-contained with its own components, composables, and types.
+
+### Documentation
+
+For more details on architecture decisions and project roadmap, see the [docs](./docs) folder:
+
+- [NOTES_INITIALES.md](./docs/NOTES_INITIALES.md) - Architecture overview and requirements
+- [DECISIONS.md](./docs/DECISIONS.md) - Technical decisions with alternatives and rationale
+- [ROADMAP.md](./docs/ROADMAP.md) - Feature roadmap and development progress

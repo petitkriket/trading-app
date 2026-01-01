@@ -1,6 +1,6 @@
 # Architecture Overview
 
-## Choix
+## Requirements et contraintes
 
 ### "Front-end skills"
 
@@ -41,27 +41,25 @@ Le testing trophy de kent c odds avec une approche pragmatique: - static type ch
 
 ### Documentation
 
-C'est une documentation rapide. Alternatives sont un VitePress et des "Architecture Decision Records" (ADR).Les objectifs de ce document sont les suivants:
+Une documentation rapide. Alternatives sont un VitePress et des "Architecture Decision Records" (ADR). Les objectifs de ce document sont les suivants:
 
 - Faciliter l'onboarding et la contribution
 - Partager la vision et les choix d'architecture
 - Capitaliser sur et/ou challenger les choix techniques pour trouver mieux (lean)
 
-## Laboratoire
+## Expérimentations
 
 - On essaie rolldown vite en beta pour voir ce que ca donne [voir](https://vite.dev/blog/announcing-vite8-beta)
 - On essaie foresight.js ou quicklink pour l'optimisation du chargement des ressources [voir](https://foresightjs.dev/)
+- On essaie Vue Vapor sous la [v3.6.0-beta.1](https://github.com/vuejs/core/releases/tag/v3.6.0-beta.1)
 
 ## Hors scope vu les requirements et le temps disponible
 
-- une CI pour garantir le respect des règles de qualité de code. (lint, test, typecheck)
-- Analyse de la performance et optimisation avancée
-- un SAST et un CVE scanner trivy + npm audit sur la CI.
 - Auto génération du CHANGELOG.md et release et déploiement via semantic release
 - L'accessibilité avancée (WCAG 2.1 AA)
 - L'internationalisation
 - Monitoring et analytics produit
-- Le SEO (limité sur une Single Page App derriere un authentification)
+- Le SEO: limité sur une Single Page App (SPA) derrière un authentification.
 
 ## References et rationale:
 
