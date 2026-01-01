@@ -86,7 +86,6 @@ const handleLogout = () => {
 .nav {
   flex-shrink: 0;
   width: 200px;
-  background-color: white;
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -112,7 +111,8 @@ const handleLogout = () => {
 }
 
 .link:hover {
-  background-color: #f5f5f5;
+  background-color: #e0e0e0;
+  color: #333;
 }
 
 .active {
