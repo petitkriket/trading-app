@@ -6,27 +6,31 @@ const { data: agentData, isLoading: isAgentLoading, error: errorData } = useAgen
 
 <template>
   <div>
-    <h1>Agent Profile</h1>
+    <h1 class="text-3xl font-bold mb-6">Agent Profile</h1>
 
     <template v-if="agentData">
-      <div>
-        <div>
-          <strong>Account ID:</strong>
-          <span>{{ agentData.accountId }}</span>
+      <div class="stats shadow-lg bg-base-100">
+        <div class="stat">
+          <div class="stat-title">Account ID</div>
+          <div class="stat-value text-2xl">{{ agentData.accountId }}</div>
         </div>
-        <div>
-          <strong>Starting Faction:</strong>
-          <span>{{ agentData.startingFaction }}</span>
+
+        <div class="stat">
+          <div class="stat-title">Starting Faction</div>
+          <div class="stat-value text-2xl">{{ agentData.startingFaction }}</div>
         </div>
       </div>
     </template>
 
     <template v-if="isAgentLoading">
-      <div>Loading agent data...</div>
+      <div class="flex items-center gap-2">
+        <span class="loading loading-spinner loading-md" />
+        <span>Loading agent data...</span>
+      </div>
     </template>
 
     <template v-if="errorData">
-      <div><strong>Error:</strong> {{ errorData.error.message }}</div>
+      <div class="alert alert-error">Error: {{ errorData.error.message }}</div>
     </template>
   </div>
 </template>

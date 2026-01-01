@@ -21,6 +21,7 @@ import { createPinia } from 'pinia'
 import { VueQueryPlugin } from '@tanstack/vue-query'
 import { createRouter, createMemoryHistory } from 'vue-router'
 import queryClient from '@/core/query-client'
+import '../../src/assets/main.css'
 
 // Augment the Cypress namespace to include type definitions for
 // your custom command.

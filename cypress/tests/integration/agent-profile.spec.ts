@@ -10,12 +10,12 @@ describe("Page de profil de l'agent", () => {
     })
 
     it("devrait afficher l'identifiant de compte", () => {
-      cy.findByText(/Account ID:/i).should('be.visible')
+      cy.findByText(/Account ID/i).should('be.visible')
       cy.findByText(/test-account-123/i).should('be.visible')
     })
 
     it('devrait afficher la faction de départ', () => {
-      cy.findByText(/Starting Faction:/i).should('be.visible')
+      cy.findByText(/Starting Faction/i).should('be.visible')
       cy.findByText(/COSMIC/i).should('be.visible')
     })
   })
